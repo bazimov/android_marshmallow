@@ -1,12 +1,10 @@
 package com.ilmnuri.com;
 
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.android.volley.ApplicationController;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -51,7 +49,6 @@ public class SplashActivity extends AppCompatActivity {
     }
     private void getList() {
 
-
         // Initialise Volley Request Queue.
         mVolleyQueue = Volley.newRequestQueue(this);
         albumModels = new ArrayList<>();
@@ -94,8 +91,6 @@ public class SplashActivity extends AppCompatActivity {
                             // Do something after 2s = 2000ms
 
                             startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//                            ApplicationController.getInstance().getRequestQueue().getCache().invalidate(Api.all_category, true);
-                            mVolleyQueue.getCache().invalidate(Api.all_category, true);
                             finish();
                         }
                     }, 2000);

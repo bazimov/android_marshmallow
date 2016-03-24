@@ -303,13 +303,10 @@ public class PlayActivity extends AppCompatActivity  {
 
     // play mp3 song
     public void play() {
-        if (mediaPlayer != null) {
-            mediaPlayer.start();
-            timeElapsed = mediaPlayer.getCurrentPosition();
-            seekbar.setProgress((int) timeElapsed);
-            durationHandler.postDelayed(updateSeekBarTime, 100);
-        }
-
+        mediaPlayer.start();
+        timeElapsed = mediaPlayer.getCurrentPosition();
+        seekbar.setProgress((int) timeElapsed);
+        durationHandler.postDelayed(updateSeekBarTime, 100);
     }
 
     //handler to change seekBarTime
@@ -331,38 +328,29 @@ public class PlayActivity extends AppCompatActivity  {
 
     // pause mp3 song
     public void pause(View view) {
-        if (mediaPlayer != null) {
-            mediaPlayer.pause();
-        }
-
+        mediaPlayer.pause();
     }
 
     // go forward at forwardTime seconds
     public void forward(View view) {
-        if (mediaPlayer != null) {
-            //check if we can go forward at forwardTime seconds before song endes
-            if ((timeElapsed + forwardTime) <= finalTime) {
-                timeElapsed = timeElapsed + forwardTime;
+        //check if we can go forward at forwardTime seconds before song endes
+        if ((timeElapsed + forwardTime) <= finalTime) {
+            timeElapsed = timeElapsed + forwardTime;
 
-                //seek to the exact second of the track
-                mediaPlayer.seekTo((int) timeElapsed);
-            }
+            //seek to the exact second of the track
+            mediaPlayer.seekTo((int) timeElapsed);
         }
-
     }
 
     // go backwards at backwardTime seconds
     public void rewind(View view) {
-        if (mediaPlayer != null) {
-            //check if we can go back at backwardTime seconds after song starts
-            if ((timeElapsed - backwardTime) > 0) {
-                timeElapsed = timeElapsed - backwardTime;
+        //check if we can go back at backwardTime seconds after song starts
+        if ((timeElapsed - backwardTime) > 0) {
+            timeElapsed = timeElapsed - backwardTime;
 
-                //seek to the exact second of the track
-                mediaPlayer.seekTo((int) timeElapsed);
-            }
+            //seek to the exact second of the track
+            mediaPlayer.seekTo((int) timeElapsed);
         }
-
     }
 
     /////////////////end
